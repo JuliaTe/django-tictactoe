@@ -1,12 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Game(models.Model):
-  first_player = models.ForeihnKey(User,
-                                    related_name="games_first_player")
+  first_player = models.ForeignKey(User,
+                                    related_name="games_first_player", on_delete=models.CASCADE)
   second_player = models.ForeignKey(User,
-                                    related_name="games_second_player")
+                                    related_name="games_second_player", on_delete=models.CASCADE)
   start_time = models.DateTimeField(auto_now_add=True)
-  last_active = models.DateTimeField(auto_new=True)
+  last_active = models.DateTimeField(auto_now=True)
 
 class Move(models.Model):
   x = models.IntegerField()
@@ -15,4 +16,4 @@ class Move(models.Model):
   by_first_player = models.BooleanField()
 
 
-  game=models.ForeignKey(Game, on_delete=models.CASCADE)
+  game = models.ForeignKey(Game, on_delete=models.CASCADE)
