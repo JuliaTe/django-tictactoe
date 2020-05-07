@@ -1,6 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+GAME_STATUS_CHOICES = (
+  ('F', 'First Player To Move'),
+  ('S', 'Second Player To Move'),
+  ('W', 'First Player Wins'),
+  ('L', 'Second Player Wins'),
+  ('D', 'Draw')
+)
+
 class Game(models.Model):
   first_player = models.ForeignKey(User,
                                     related_name="games_first_player", on_delete=models.CASCADE)
