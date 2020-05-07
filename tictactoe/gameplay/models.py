@@ -17,7 +17,7 @@ class Game(models.Model):
   start_time = models.DateTimeField(auto_now_add=True)
   last_active = models.DateTimeField(auto_now=True)
   status = models.CharField(max_length=1, default='F',
-                              choices=GAME_STATUS_CHOICES)
+                              choices=GAME_STATUS_CHOICES) #added choices
 
   def __str__(self):
     return "{0} vs {1}".format(
