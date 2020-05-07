@@ -16,7 +16,8 @@ class Game(models.Model):
                                     related_name="games_second_player", on_delete=models.CASCADE)
   start_time = models.DateTimeField(auto_now_add=True)
   last_active = models.DateTimeField(auto_now=True)
-  status = models.CharField(max_length=1, default='F')
+  status = models.CharField(max_length=1, default='F',
+                              choices=GAME_STATUS_CHOICES)
 
   def __str__(self):
     return "{0} vs {1}".format(
